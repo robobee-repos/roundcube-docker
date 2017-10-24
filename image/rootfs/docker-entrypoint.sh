@@ -29,7 +29,7 @@ function copy_php_conf() {
   if ! check_files_exists "*.ini"; then
     return
   fi
-  rsync -v ${dir}/*.ini /usr/local/etc/php/conf.d/
+  rsync -vL ${dir}/*.ini /usr/local/etc/php/conf.d/
  }
  
 function copy_php_fpm_conf() {
@@ -41,7 +41,7 @@ function copy_php_fpm_conf() {
   if ! check_files_exists "*.conf"; then
     return
   fi
-  rsync -v ${dir}/*.conf /usr/local/etc/php-fpm.d/
+  rsync -vL ${dir}/*.conf /usr/local/etc/php-fpm.d/
  }
  
 function copy_roundcube() {
@@ -53,7 +53,7 @@ function copy_roundcube() {
   if ! check_files_exists "*.php"; then
     return
   fi
-  rsync -v ${dir}/*.php "${WEB_ROOT}/config/"
+  rsync -vL ${dir}/*.php "${WEB_ROOT}/config/"
 }
 
 function sync_roundcube() {

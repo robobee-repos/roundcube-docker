@@ -1,6 +1,6 @@
 REPOSITORY := erwin82
 NAME := roundcube
-VERSION ?= v1.3.1-fpm-r1-1
+VERSION ?= v1.3.1-fpm-r1-2
 
 build: _build ##@targets Builds the docker image.
 
