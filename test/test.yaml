@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+  roundcube:
+    image: erwin82/roundcube:latest
+    links:
+      - db
+    environment:
+      DEBUG: "true"
+    volumes:
+      - ${ROOT_DIR}/html:/var/www/html
+      - ${ROUNDCUBE_CONF_DIR}:/roundcube-in
+
+  db:
+    image: bitnami/mariadb:latest
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
+      MARIADB_USER: "roundcubedb"
+      MARIADB_PASSWORD: "roundcubedb"
+      MARIADB_DATABASE: "roundcubedb"
+    volumes:
+      - ${ROOT_DIR}/bitnami/mariadb:/bitnami/mariadb
+
+  nginx:
+    image: erwin82/nginx:latest
+    ports:
+      - 8080:8080
+    links:
+      - roundcube
+    volumes:
+      - ${NGINX_CONF_DIR}:/nginx-in
+      - ${ROOT_DIR}/html:/var/www/html
