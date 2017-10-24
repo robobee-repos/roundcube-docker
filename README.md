@@ -1,12 +1,12 @@
-# OwnCloud-Docker
+# Roundcube-Docker
 
 ## Description
 
-It modifies the parent image insofar as
-it can take input configuration files to override the image configuration
-files, allowing for Kubernetes config maps. Additionally, it includes
-the rsync daemon and configures a separate data directory. The rsync
-daemon can be used to backup the ownCloud installation and the data directory.
+Packages the Roundcubemail as a docker container. It is based on the docker
+image [instrumentisto/roundcube](https://hub.docker.com/r/instrumentisto/roundcube/).
+This image does not require root or any additional privileges to run and can
+be deployed in OpenShift. Per default sqlite is configured as the database
+backend, but the image comes with MySQL and PostgreSQL libraries installed.
 
 ## Environment Parameters
 
@@ -36,7 +36,6 @@ daemon can be used to backup the ownCloud installation and the data directory.
 | Path | Description |
 | ------------- | ----- |
 | /var/www/html  | www-root directory. |
-| /data | Reserved ownCloud user data directory. |
 
 ## Input Configration
 
@@ -44,12 +43,12 @@ daemon can be used to backup the ownCloud installation and the data directory.
 | ------------- | ------------- |
 | /php-in/*.ini | /usr/local/etc/php/ |
 | /php-fpm-in/*.conf | /usr/local/etc/php-fpm.d/ |
+| /roundcube-in/*.php | /var/www/html/config/ |
 
 ## Test
 
-The docker-compose file `test.yaml` can be used to startup MySQL and the
-Wordpress base containers. The Wordpress installation can be then accessed
-from `localhost:8080`.
+The docker-compose file `test.yaml` can be used to startup the container and
+Roundcube should be available at `localhost:8080`.
 
 ```
 docker-compose -f test.yaml up
