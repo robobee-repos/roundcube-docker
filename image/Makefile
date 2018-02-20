@@ -1,6 +1,6 @@
 REPOSITORY := robobeerun
 NAME := roundcube
-VERSION ?= v1.3.4-fpm-r1-2
+VERSION ?= v1.3.4-fpm-r1
 
 build: _build ##@targets Builds the docker image.
 
