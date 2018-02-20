@@ -19,7 +19,7 @@ backend, but the image comes with MySQL and PostgreSQL libraries installed.
 | PHP_FPM_MIN_SPARE_SERVERS | 2 | pm.min_spare_servers |
 | PHP_FPM_MAX_SPARE_SERVERS | 5 | pm.max_spare_servers |
 | PHP_FPM_MAX_REQUESTS | 500 | pm.max_requests |
-| PHP_FPM_REQUEST_SLOWLOG_TIMEOUT | 30s | request_slowlog_timeout |
+| PHP_FPM_REQUEST_SLOWLOG_TIMEOUT | 0 | request_slowlog_timeout |
 | PHP_FPM_CATCH_WORKERS_OUTPUT | 1 | catch_workers_output |
 | PHP_OPCACHE_ENABLE_CLI | 1 | opcache.enable_cli |
 | PHP_OPCACHE_ENABLE | 1 | opcache.enable |

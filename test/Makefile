@@ -8,7 +8,7 @@ export ROUNDCUBE_CONF_DIR := $(shell realpath ./roundcube-in)
 
 test: setup ##@targets Starts docker compose.
 	echo $$NAME
-	docker-compose -p ${NAME} -f test.yaml up
+	docker-compose -p $(NAME) -f test.yaml up
 .PHONY: test
 
 clean: rm ##@targets Removes docker containers and created files.
@@ -19,15 +19,13 @@ clean: rm ##@targets Removes docker containers and created files.
 .PHONY: clean
 
 rm: ##@targets Removes docker containers.
-	docker-compose -p ${NAME} -f test.yaml stop
-	docker-compose -p ${NAME} -f test.yaml rm -f
+	docker-compose -p $(NAME) -f test.yaml stop
+	docker-compose -p $(NAME) -f test.yaml rm -f
 .PHONY: rm
 
 setup: $(ROUNDCUBE_CONF_DIR)/config.inc.php
 	mkdir -p $(ROOT_DIR)/html
-	mkdir -p $(ROOT_DIR)/bitnami/mariadb
 	sudo chmod o+rwX $(ROOT_DIR)/html
-	sudo chmod o+rwX $(ROOT_DIR)/bitnami/mariadb
 .PHONY: setup
 
 $(ROUNDCUBE_CONF_DIR)/config.inc.php:
